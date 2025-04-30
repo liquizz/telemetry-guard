@@ -35,6 +35,8 @@ cd telemetry-guard/TelemetryGuardService
 dotnet publish -c Release -r win-x64 --self-contained
 ```
 
+Published folder will be located at TelemetryGuardService\bin\Release\net9.0\win-x64
+
 3. Install the service:
 ```bash
 sc create TelemetryGuardService binPath= "path\to\TelemetryGuardService.exe" start= auto
