@@ -26,7 +26,7 @@ By default, TelemetryGuard monitors and blocks the following services:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/telemetry-guard.git
+git clone https://github.com/liquizz/telemetry-guard.git
 ```
 
 2. Build the solution:
@@ -66,6 +66,8 @@ The repository also includes a PowerShell script (`Scripts/DisableTelemetry.ps1`
 - Stop and disable telemetry services
 - Disable telemetry-related scheduled tasks
 - Configure registry settings to block telemetry
+
+![Script Demo](https://github.com/user-attachments/assets/b828c798-6d4f-4419-9c00-e9c1cd0716c6)
 
 To run the script:
 ```powershell
