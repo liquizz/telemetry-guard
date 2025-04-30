@@ -31,7 +31,7 @@ git clone https://github.com/liquizz/telemetry-guard.git
 
 2. Build the solution:
 ```bash
-cd telemetry-guard
+cd telemetry-guard/TelemetryGuardService
 dotnet publish -c Release -r win-x64 --self-contained
 ```
 
