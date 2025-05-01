@@ -4,7 +4,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-TelemetryGuardService-292d4da4-4967-4145-ba92-08518ce2f568</UserSecretsId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Vladyslav Sheiko (liquizz)</Authors>
     <Product>TelemetryGuard</Product>
     <Description>A Windows service that actively monitors and blocks telemetry services</Description>
