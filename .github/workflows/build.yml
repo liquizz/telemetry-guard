@@ -11,10 +11,10 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
         
@@ -38,13 +38,13 @@ jobs:
       run: Compress-Archive -Path ./publish/* -DestinationPath TelemetryGuard-Service.zip
       
     - name: Upload Service Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: TelemetryGuard-Service
         path: TelemetryGuard-Service.zip
         
     - name: Upload Scripts Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: TelemetryGuard-Scripts
         path: TelemetryGuard-Scripts.zip
@@ -55,12 +55,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Service Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: TelemetryGuard-Service
           
       - name: Download Scripts Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: TelemetryGuard-Scripts
           
