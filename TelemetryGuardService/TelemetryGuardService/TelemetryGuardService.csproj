@@ -5,6 +5,13 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>dotnet-TelemetryGuardService-292d4da4-4967-4145-ba92-08518ce2f568</UserSecretsId>
+        <Version>1.0.0</Version>
+        <Authors>Vladyslav Sheiko (liquizz)</Authors>
+        <Product>TelemetryGuard</Product>
+        <Description>A Windows service that actively monitors and blocks telemetry services</Description>
+        <Copyright>MIT License</Copyright>
+        <PackageProjectUrl>https://github.com/liquizz/telemetry-guard</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/liquizz/telemetry-guard</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>

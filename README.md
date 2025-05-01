@@ -76,6 +76,39 @@ To run the script:
 .\Scripts\DisableTelemetry.ps1
 ```
 
+## Versioning
+
+This project follows [Semantic Versioning](https://semver.org/) (SemVer). Version numbers are in the format MAJOR.MINOR.PATCH:
+
+- MAJOR: Incompatible API changes
+- MINOR: Backwards-compatible functionality additions
+- PATCH: Backwards-compatible bug fixes
+
+### Version Management
+
+A PowerShell script is provided to help manage versions:
+
+```powershell
+# Display current version
+.\Scripts\version.ps1
+
+# Bump major version (for breaking changes)
+.\Scripts\version.ps1 -BumpType major
+
+# Bump minor version (for new features)
+.\Scripts\version.ps1 -BumpType minor
+
+# Bump patch version (for bug fixes)
+.\Scripts\version.ps1 -BumpType patch
+```
+
+### Releases
+
+GitHub releases are automatically created when a new version tag is pushed. The following artifacts are included in each release:
+
+- TelemetryGuard-Service.zip - Contains the compiled Windows service
+- TelemetryGuard-Scripts.zip - Contains PowerShell scripts for manual telemetry blocking
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -83,6 +116,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+For major changes, please open an issue first to discuss what you would like to change.
+
+See the [CHANGELOG.md](CHANGELOG.md) for a detailed history of changes.
 
 ## Disclaimer
 
