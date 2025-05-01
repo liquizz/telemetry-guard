@@ -1,0 +1,74 @@
+name: Build and Release
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 9.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore TelemetryGuardService/TelemetryGuardService.sln
+      
+    - name: Build
+      run: dotnet build TelemetryGuardService/TelemetryGuardService.sln --configuration Release --no-restore
+      
+    - name: Test
+      run: dotnet test TelemetryGuardService/TelemetryGuardService.sln --configuration Release --no-build --verbosity normal
+      if: success() || failure()
+      
+    - name: Publish
+      run: dotnet publish TelemetryGuardService/TelemetryGuardService/TelemetryGuardService.csproj -c Release -r win-x64 --self-contained -o ./publish
+      
+    - name: Create Script Archive
+      run: Compress-Archive -Path Scripts/* -DestinationPath TelemetryGuard-Scripts.zip
+      
+    - name: Create Service Archive
+      run: Compress-Archive -Path ./publish/* -DestinationPath TelemetryGuard-Service.zip
+      
+    - name: Upload Service Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: TelemetryGuard-Service
+        path: TelemetryGuard-Service.zip
+        
+    - name: Upload Scripts Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: TelemetryGuard-Scripts
+        path: TelemetryGuard-Scripts.zip
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Service Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: TelemetryGuard-Service
+          
+      - name: Download Scripts Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: TelemetryGuard-Scripts
+          
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            TelemetryGuard-Service.zip
+            TelemetryGuard-Scripts.zip
+          draft: false
+          prerelease: false 
